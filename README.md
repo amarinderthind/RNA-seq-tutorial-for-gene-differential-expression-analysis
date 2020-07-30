@@ -1,4 +1,4 @@
-# RNA-seq-tutorial-for-gene-differential-expression-analysis
+# RNASeq tutorial for gene differential expression analysis
 This tutorial is created for educational purposes. 
 
 # About the RNA-Seq analysis
