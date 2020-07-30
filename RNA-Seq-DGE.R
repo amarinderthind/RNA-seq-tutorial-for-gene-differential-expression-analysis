@@ -184,16 +184,16 @@ write.table(significant_table,file_sigTab,sep = ",")
 write.table(edgeR_results,file_allRes,sep = ",")
 
 
-################# common genes between deseq2 and edgeR  ##########
+################# Overlapped genes between deseq2 and edgeR  ##########
 
 library(gplots)
 
 venn(list(edgeR = genes.edgeR, DESeq2 = genes.deseq))
-common=intersect(genes.deseq,genes.edgeR)
-View(common)
+overlapped_genes <- intersect(genes.deseq,genes.edgeR)
+
 
 file_common <- paste('Common_DEG_deseq2_edgeR_',firstC,'_v_',SecondC,'.csv',sep = '')
-write.table(common,file_common,sep = ",", row.names = F)
+write.table(overlapped_genes,file_common,sep = ",", row.names = F)
 
 ## Save session info
 sessionInfo()
