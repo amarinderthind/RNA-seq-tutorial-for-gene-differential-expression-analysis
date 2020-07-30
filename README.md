@@ -18,7 +18,8 @@ You should have a raw count and annotation/metadata file for running this analys
  
  ReactomePA (enrichment analysis)
 
-# Note: PCA and Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
+# Note:
+PCA and Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
 
 # Contact
 In case you have any query please feel free to contact thind.amarinder@gmail.com for any other queries.
