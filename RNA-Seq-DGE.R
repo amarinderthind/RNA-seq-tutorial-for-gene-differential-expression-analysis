@@ -26,7 +26,7 @@ rawcount <- rawcount[row.names(rawcount) %in%  all_coding_genes$hgnc_symbol,]
 
 ######################  Filter low count gene  #########################
 
-keep <- rowSums(cpm(rawcount)>1) >= 5   ## depends case to case and number of samples as well
+keep <- rowSums(cpm(rawcount)>1) >= 5   ## depends case to case and on the number of samples
 rawcount<- rawcount[keep,]
 
 ###################### Data annotation  #################################
@@ -39,10 +39,10 @@ rownames(anno) <- anno$sample
 
 firstC<-"Case1"       #case1 #case2 #case3 etc          
 SecondC <-"Control"     
-p.threshold <- 0.05   ##defined threshold filtering
+p.threshold <- 0.05   ##define threshold for filtering
 
 
-### subsets raw and conditional data for defined pairs
+### subset raw and conditional data for defined pairs
 
 meta <- meta[(meta$Condition ==firstC |meta$Condition ==SecondC),]
 rawcount <- rawcount[,names(rawcount) %in% meta$sample]
@@ -56,7 +56,7 @@ dds <- DESeq(dds)
 
 ################# contrast based  comparison ##########################
 
-#if multiple comparison ##need to change the contrast for every comparision
+#In case of multiple comparisons ## we need to change the contrast for every comparision
 contrast<- c("Condition",firstC,SecondC)
 
 res <- results(dds, contrast=contrast)
