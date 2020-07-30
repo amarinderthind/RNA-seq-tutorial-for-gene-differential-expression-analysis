@@ -5,10 +5,14 @@ This tutorial is created for educational purposes.
 The R script performs several steps in RNAseq gene differential expression analysis, including filtering, preprocessing, visualization, clustering, and Enrichment. For the analysis, several R Bioconductor packages are required to be installed (Installation commands are provided in the script. However, users can also refer to the Bioconductor website for detailed instructions). 
 
 # Bioconductor packages to be installed
- DESeq2  
+ DESeq2
+ 
  edgeR
+ 
  biomaRt (Very useful for gene filtering and annotations)
+ 
  PCAtools (PCA detailed analysis)
+ 
  ReactomePA (enrichment analysis)
 
 # Contact
