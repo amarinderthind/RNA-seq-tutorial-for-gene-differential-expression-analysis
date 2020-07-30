@@ -195,8 +195,6 @@ View(common)
 file_common <- paste('Common_DEG_deseq2_edgeR_',firstC,'_v_',SecondC,'.csv',sep = '')
 write.table(common,file_common,sep = ",", row.names = F)
 
+## Save session info
 sessionInfo()
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
-
-#rawcount$genes <- row.names(rawcount)
-
