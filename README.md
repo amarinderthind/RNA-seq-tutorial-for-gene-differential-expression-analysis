@@ -18,7 +18,7 @@ You should have a raw count and annotation/metadata file for running this analys
  
  ReactomePA (enrichment analysis)
 
-[RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
+# [RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
 
 # Note:
 PCA and Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
