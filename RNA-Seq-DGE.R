@@ -68,7 +68,7 @@ res[, nam] <- as.logical(res$log2FoldChange < 0)
 
 genes.deseq <- row.names(res)[which(res$threshold)]
 
-genes_deseq2_sig=res[which(res$threshold),]
+genes_deseq2_sig <- res[which(res$threshold),]
 
 file <- paste('Deseq2_',firstC,'_v_',SecondC,'_results_significant_padj0.05.csv',sep = '')
 all_results <- paste('Deseq2_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
