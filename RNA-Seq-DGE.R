@@ -44,12 +44,12 @@ p.threshold <- 0.05   ##define threshold for filtering
 
 ### subset raw and conditional data for defined pairs
 
-meta <- meta[(meta$Condition ==firstC |meta$Condition ==SecondC),]
-rawcount <- rawcount[,names(rawcount) %in% meta$sample]
+anno <- anno[(anno$Condition ==firstC |anno$Condition ==SecondC),]
+rawcount <- rawcount[,names(rawcount) %in% anno$sample]
 
 ############################### Create DESeq2 datasets #############################
 
-dds <- DESeqDataSetFromMatrix(countData = rawcount, colData = meta, design = ~Condition )
+dds <- DESeqDataSetFromMatrix(countData = rawcount, colData = anno, design = ~Condition )
 
 ## Run DESEQ2
 dds <- DESeq(dds)
@@ -80,7 +80,7 @@ write.table(res,all_results,sep = ",")
 
 library(PCAtools)
 
-p <-pca(rawcount, metadata = meta, removeVar = 0.1)
+p <-pca(rawcount, metadata = anno, removeVar = 0.1)
 #biplot(p)
 plotloadings(p)
  
@@ -137,7 +137,7 @@ viewPathway("Extracellular matrix organization", readable=TRUE, foldChange=genes
 ############## edgeR  ##########################
 
 
-dge <- DGEList(counts=rawcount, group=meta$Condition)
+dge <- DGEList(counts=rawcount, group=anno$Condition)
 
 # Normalize by total count
 dge <- calcNormFactors(dge, method = "TMM")
