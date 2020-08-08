@@ -1,3 +1,7 @@
+### Author##############
+## Amarinder Singh Thind
+
+
 # Install and load packages
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
