@@ -84,7 +84,8 @@ write.table(res,all_results,sep = ",")
 
 library(PCAtools)
 
-p <-pca(rawcount, metadata = anno, removeVar = 0.1)
+cpmcount <- cpm(rawcount)
+p <-pca(cpmcount, metadata = anno, removeVar = 0.1)
 #biplot(p)
 plotloadings(p)
  
