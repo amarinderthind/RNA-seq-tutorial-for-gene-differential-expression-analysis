@@ -96,13 +96,20 @@ biplot(p,
        legendPosition = 'right')
 
 
-##heatmap
-vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rld
+## Varinace transformation vst or rlog
+vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rlog
 #rld <- rlog(dds, blind=FALSE) 
 
 ###### PCA with design consideration ###
-plotPCA(vsd, intgroup=c("Condition", "sample"))
+pcaData <- plotPCA(vsd, intgroup=c("Condition", "sample"), returnData=TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(PC1, PC2, color=sample, shape=Condition)) +
+  geom_point(size=3) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed()
 
+##heatmap
 sampleDists <- dist(t(assay(vsd)))
 library("RColorBrewer")
 library('pheatmap')
