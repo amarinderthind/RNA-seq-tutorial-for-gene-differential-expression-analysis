@@ -100,6 +100,9 @@ biplot(p,
 vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rld
 #rld <- rlog(dds, blind=FALSE) 
 
+###### PCA with design consideration ###
+plotPCA(vsd, intgroup=c("Condition", "sample"))
+
 sampleDists <- dist(t(assay(vsd)))
 library("RColorBrewer")
 library('pheatmap')
