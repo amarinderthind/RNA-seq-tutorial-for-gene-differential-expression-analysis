@@ -41,7 +41,7 @@ rownames(anno) <- anno$sample
 # Define conditions that you want to compare if you have more than one #control #case
 # This is pair-wise comparison, so only consider one pair at one time
 
-firstC<-"Case1"       #case1 #case2 #case3 etc          
+firstC<-"case1"       #case1 #case2 #case3 etc          
 SecondC <-"Control"     
 p.threshold <- 0.05   ##define threshold for filtering
 
