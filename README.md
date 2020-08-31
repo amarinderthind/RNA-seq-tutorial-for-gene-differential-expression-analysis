@@ -23,7 +23,8 @@ You should have a raw count and annotation/metadata file for running this analys
 # [RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
 
 # Note:
-PCA and Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
+Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
+If data obtained by different batch processing please consider ~batch (batch effect in the design matrix). 
 
 # Contact
 In case you have any query please feel free to contact thind.amarinder@gmail.com for any other queries.
