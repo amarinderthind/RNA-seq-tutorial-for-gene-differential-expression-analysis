@@ -38,7 +38,7 @@ rawcount<- rawcount[keep,]
 anno <-read.table ("Annotation_of_samples.csv",header=TRUE,  sep=",") ##In this case Two coulmns (a) sample (b) Condition
 rownames(anno) <- anno$sample
 
-# Define conditions that you want to compare if you have more than one #control #case
+# Define conditions (for contrast) that you want to compare if you have more than one #control #case
 # This is pair-wise comparison, so only consider one pair at one time
 
 firstC<-"case1"       #case1 #case2 #case3 etc          
@@ -174,7 +174,7 @@ fit.edgeR <- glmFit(dge, design.mat)
 
 # Differential expression
 
-contrasts.edgeR <- makeContrasts(Case1 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
+contrasts.edgeR <- makeContrasts(case1 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
 
 
 lrt.edgeR <- glmLRT(fit.edgeR, contrast=contrasts.edgeR)
