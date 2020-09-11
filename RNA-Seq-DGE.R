@@ -33,6 +33,10 @@ rawcount <- rawcount[row.names(rawcount) %in%  all_coding_genes$hgnc_symbol,]
 keep <- rowSums(cpm(rawcount)>1) >= 5   ## depends case to case and on the number of samples
 rawcount<- rawcount[keep,]
 
+## if you not sure about the threshold, there are automatics calculation for the threshold. Please refer to the following link
+## https://seqqc.wordpress.com/2020/02/17/removing-low-count-genes-for-rna-seq-downstream-analysis/
+## I am keeping this script simple as much as possible. But you can check the relevant function at the end of this script.
+
 ###################### Data annotation  #################################
 
 anno <-read.table ("Annotation_of_samples.csv",header=TRUE,  sep=",") ##In this case Two coulmns (a) sample (b) Condition
@@ -213,3 +217,34 @@ write.table(overlapped_genes,file_common,sep = ",", row.names = F)
 ## Save session info
 sessionInfo()
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
+
+
+########## Automate Function for filtering the low count read ###########
+## adopted from ## https://seqqc.wordpress.com/2020/02/17/removing-low-count-genes-for-rna-seq-downstream-analysis/
+
+selectGenes <- function(counts, min.count=10, N=0.90){
+ 
+  lib.size <- colSums(counts)
+  MedianLibSize <- median(lib.size)
+  CPM.Cutoff <- min.count / MedianLibSize*1e6
+  CPM <- edgeR::cpm(counts,lib.size=lib.size)
+ 
+  min.samples <- round(N * ncol(counts))
+ 
+  f1 <- genefilter::kOverA(min.samples, CPM.Cutoff)
+  flist <- genefilter::filterfun(f1)
+  keep <- genefilter::genefilter(CPM, flist)
+ 
+  ## the same as:
+  #keep <- apply(CPM, 1, function(x, n = min.samples){
+  #  t = sum(x >= CPM.Cutoff) >= n
+  #  t
+  #})
+ 
+  return(keep)
+}
+ 
+keep.exprs <- selectGenes(assay(x), min.count=10, N=0.90)
+myFilt <- x[keep.exprs,]
+dim(myFilt)
+###########################################################################
