@@ -106,27 +106,6 @@ pheatmap(sampleDistMatrix,
          col=colors)
 
 
-############ Quick enrichment analysis ##################
-BiocManager::install("ReactomePA")
-library(ReactomePA)
-
-all <- genes.deseq   ## retreive EntrezGene id's
-
-genes=getBM(attributes = c("hgnc_symbol", "entrezgene_id"), filters = "hgnc_symbol", values = all, bmHeader = T, mart = mart)
-
-genes1 <- genes$`NCBI gene (formerly Entrezgene) ID` 
-
-#?enrichPathway #pvalueCutoff=0.02, #pAdjustMethod = "BH", qvalueCutoff = 0.01,
-x <- enrichPathway(gene=genes1,  pvalueCutoff=0.05,readable=T)
-
-#head(as.data.frame(x))
-barplot(x, showCategory=10)
-dotplot(x, showCategory=10)
-emapplot(x)
-cnetplot(x, categorySize="pvalue", foldChange=genes1)
-emapplot(x, color="pvalue")
-viewPathway("Extracellular matrix organization", readable=TRUE, foldChange=genes1)   ## it's an example
-
 
 ############## edgeR  ##########################
 
@@ -212,6 +191,31 @@ overlapped_genes <- intersect(genes.deseq,genes.edgeR)
 
 file_common <- paste('Common_DEG_deseq2_edgeR_',firstC,'_v_',SecondC,'.csv',sep = '')
 write.table(overlapped_genes,file_common,sep = ",", row.names = F)
+
+############ Quick enrichment analysis ##################
+BiocManager::install("ReactomePA")
+library(ReactomePA)
+
+all <- overlapped_genes   ## retreive EntrezGene id's
+
+genes=getBM(attributes = c("hgnc_symbol", "entrezgene_id"), filters = "hgnc_symbol", values = all, bmHeader = T, mart = mart)
+
+genes1 <- genes$`NCBI gene (formerly Entrezgene) ID` 
+
+#?enrichPathway #pvalueCutoff=0.02, #pAdjustMethod = "BH", qvalueCutoff = 0.01,
+x <- enrichPathway(gene=genes1,  pvalueCutoff=0.05,readable=T)
+
+#head(as.data.frame(x))
+barplot(x, showCategory=10)
+dotplot(x, showCategory=10)
+emapplot(x)
+cnetplot(x, categorySize="pvalue", foldChange=genes1)
+emapplot(x, color="pvalue")
+viewPathway("Extracellular matrix organization", readable=TRUE, foldChange=genes1)   ## it's an example
+
+
+
+
 
 ## Save session info
 sessionInfo()
