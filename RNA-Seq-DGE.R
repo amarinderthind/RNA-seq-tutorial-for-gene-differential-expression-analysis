@@ -86,20 +86,6 @@ write.table(res,all_results,sep = ",")
 
 ################### PCA and Heat-MAp Plots ############################
 
-library(PCAtools)
-
-cpmcount <- cpm(rawcount)
-p <-pca(cpmcount, metadata = anno, removeVar = 0.1)
-#biplot(p)
-plotloadings(p)
- 
-biplot(p,
-       lab = paste0(p$metadata$sample),
-       colby = 'Condition',
-       hline = 0, vline = 0,
-       legendPosition = 'right')
-
-
 ## Varinace transformation vst or rlog
 vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rlog
 #rld <- rlog(dds, blind=FALSE) 
@@ -161,6 +147,25 @@ dge <- DGEList(counts=rawcount, group=anno$Condition)
 # Normalize by total count
 dge <- calcNormFactors(dge, method = "TMM")
 
+## PCA ## for more details, please visit following link
+##https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html
+library(PCAtools)
+
+cpmlog <- cpm(dge, log = TRUE, prior.count = 1)
+
+p <-pca(cpmlog, metadata = anno, removeVar = 0.2) ## -- removing the lower 20% of variables based on variance
+#biplot(p)
+plotloadings(p)
+ 
+biplot(p,
+       lab = paste0(p$metadata$sample),
+       colby = 'Condition',
+       hline = 0, vline = 0,
+       legendPosition = 'right')
+
+
+
+
 # Create the contrast matrix
 design.mat <- model.matrix(~ 0 + dge$samples$group)
 colnames(design.mat) <- levels(dge$samples$group)
@@ -168,7 +173,7 @@ design.mat
 
 # Estimate dispersion parameter for GLM
 dge <- estimateGLMCommonDisp(dge, design.mat)
-dge <- estimateGLMTrendedDisp(dge, design.mat)
+dge <- estimateGLMTrendedDisp(dge, design.mat) 
 dge<- estimateGLMTagwiseDisp(dge,design.mat)
 # Plot mean-variance
 #plotBCV(dge)
