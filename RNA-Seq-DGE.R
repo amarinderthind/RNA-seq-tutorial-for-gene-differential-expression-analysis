@@ -116,8 +116,6 @@ genes=getBM(attributes = c("hgnc_symbol", "entrezgene_id"), filters = "hgnc_symb
 
 genes1 <- genes$`NCBI gene (formerly Entrezgene) ID` 
 
-
-
 #?enrichPathway #pvalueCutoff=0.02, #pAdjustMethod = "BH", qvalueCutoff = 0.01,
 x <- enrichPathway(gene=genes1,  pvalueCutoff=0.05,readable=T)
 
@@ -163,8 +161,6 @@ biplot(p,
        legendPosition = 'right')
 
 
-
-
 # Create the contrast matrix
 design.mat <- model.matrix(~ 0 + dge$samples$group)
 colnames(design.mat) <- levels(dge$samples$group)
@@ -183,7 +179,6 @@ fit.edgeR <- glmFit(dge, design.mat)
 # Differential expression
 
 contrasts.edgeR <- makeContrasts(case1 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
-
 
 lrt.edgeR <- glmLRT(fit.edgeR, contrast=contrasts.edgeR)
 
@@ -222,33 +217,3 @@ write.table(overlapped_genes,file_common,sep = ",", row.names = F)
 sessionInfo()
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 
-
-########## Automate Function for filtering the low count read ###########
-## adopted from ## https://seqqc.wordpress.com/2020/02/17/removing-low-count-genes-for-rna-seq-downstream-analysis/
-
-selectGenes <- function(counts, min.count=10, N=0.90){
- 
-  lib.size <- colSums(counts)
-  MedianLibSize <- median(lib.size)
-  CPM.Cutoff <- min.count / MedianLibSize*1e6
-  CPM <- edgeR::cpm(counts,lib.size=lib.size)
- 
-  min.samples <- round(N * ncol(counts))
- 
-  f1 <- genefilter::kOverA(min.samples, CPM.Cutoff)
-  flist <- genefilter::filterfun(f1)
-  keep <- genefilter::genefilter(CPM, flist)
- 
-  ## the same as:
-  #keep <- apply(CPM, 1, function(x, n = min.samples){
-  #  t = sum(x >= CPM.Cutoff) >= n
-  #  t
-  #})
- 
-  return(keep)
-}
- 
-keep.exprs <- selectGenes(assay(x), min.count=10, N=0.90)
-myFilt <- x[keep.exprs,]
-dim(myFilt)
-###########################################################################
