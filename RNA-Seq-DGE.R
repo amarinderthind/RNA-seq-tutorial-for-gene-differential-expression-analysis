@@ -28,15 +28,6 @@ mart <- useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
 all_coding_genes <- getBM(attributes = c( "hgnc_symbol"), filters = c("biotype"), values = list(biotype="protein_coding"), mart = mart)
 rawcount <- rawcount[row.names(rawcount) %in%  all_coding_genes$hgnc_symbol,]
 
-######################  Filter low count gene  #########################
-
-keep <- rowSums(cpm(rawcount)>1) >= 5   ## depends case to case and on the number of samples
-rawcount<- rawcount[keep,]
-
-## if you not sure about the threshold, there are automatics calculation for the threshold. Please refer to the following link
-## https://seqqc.wordpress.com/2020/02/17/removing-low-count-genes-for-rna-seq-downstream-analysis/
-## I am keeping this script simple as much as possible. But you can check the relevant function at the end of this script.
-
 ###################### Data annotation  #################################
 
 anno <-read.table ("Annotation_of_samples.csv",header=TRUE,  sep=",") ##In this case Two coulmns (a) sample (b) Condition
@@ -146,6 +137,14 @@ dge <- DGEList(counts=rawcount, group=anno$Condition)
 
 # Normalize by total count
 dge <- calcNormFactors(dge, method = "TMM")
+
+# filter out lowly expressed genes
+keep <- filterByExpr(dge)
+dge <- dge[keep,,keep.lib.sizes=FALSE]  # It is recommended to recalculate the library sizes of the DGEList object after the filtering, although the downstream analysis is robust to whether this is done or not.
+
+# You can also filter the expression matrix based on the treatment factors of scientific interest 
+#keep <- filterByExpr(y, group=Condition)
+
 
 ## PCA ## for more details, please visit following link
 ##https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html
