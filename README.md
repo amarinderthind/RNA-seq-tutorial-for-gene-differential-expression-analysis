@@ -26,8 +26,14 @@ You should have a raw count and annotation/metadata file for running this analys
 No significant enrichment found from the demo example, so enrichments plots are empty or commented. 
 
 # Note:
-Enrichment analysis is based on  Deseq2. However, users may be interested in considering only those genes that are commonly differentially expressed between DEseq2 and EdgeR.  
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix). 
+
+# Reading material or relavant articles
+[Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
+[EdgeR](https://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf)
+[Deseq2](https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
+[PCAtools](https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html)
+[Reactome Pathway Analysis](https://www.bioconductor.org/packages/release/bioc/vignettes/ReactomePA/inst/doc/ReactomePA.html)
 
 # Contact
 In case you have any query please feel free to contact thind.amarinder@gmail.com for any other queries.
