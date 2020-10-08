@@ -130,7 +130,7 @@ library(PCAtools)
 
 cpmlog <- cpm(dge, log = TRUE, prior.count = 1)
 
-p <-pca(cpmlog, metadata = anno, removeVar = 0.2) ## -- removing the lower 20% of variables based on variance
+p <-pca(cpmlog, metadata = anno, removeVar = 0.1) ## -- removing the lower 10% of variables based on variance
 #biplot(p)
 plotloadings(p)
  
