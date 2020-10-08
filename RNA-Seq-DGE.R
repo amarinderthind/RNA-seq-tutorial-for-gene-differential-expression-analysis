@@ -7,10 +7,10 @@
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 
-BiocManager::install("DESeq2")
-BiocManager::install("edgeR")
-BiocManager::install("biomaRt")
-BiocManager::install('PCAtools')
+#BiocManager::install("DESeq2")
+#BiocManager::install("edgeR")
+#BiocManager::install("biomaRt")
+#BiocManager::install('PCAtools')
 
 library(edgeR)
 library(DESeq2)
@@ -202,7 +202,8 @@ file_common <- paste('Common_DEG_deseq2_edgeR_',firstC,'_v_',SecondC,'.csv',sep 
 write.table(overlapped_genes,file_common,sep = ",", row.names = F)
 
 ############ Quick enrichment analysis ##################
-BiocManager::install("ReactomePA")
+#BiocManager::install("ReactomePA")
+
 library(ReactomePA)
 
 all <- overlapped_genes   ## retreive EntrezGene id's
