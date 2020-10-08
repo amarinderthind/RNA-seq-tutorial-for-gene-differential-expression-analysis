@@ -81,6 +81,7 @@ write.table(res,all_results,sep = ",")
 vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rlog
 #rld <- rlog(dds, blind=FALSE) 
 
+library(ggplot2)
 ###### PCA with design consideration ###
 pcaData <- plotPCA(vsd, intgroup=c("Condition", "sample"), returnData=TRUE)
 percentVar <- round(100 * attr(pcaData, "percentVar"))
