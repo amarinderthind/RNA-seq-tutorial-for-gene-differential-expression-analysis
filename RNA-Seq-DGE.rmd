@@ -209,20 +209,20 @@ dge<- estimateGLMTagwiseDisp(dge,design.mat)
 # Model fitting
 ```{r}
 
-fit.edgeR <- glmFit(dge, design.mat)
+fit.edgeR <- glmQLFit(dge, design.mat)
 
 # Differential expression
 
 contrasts.edgeR <- makeContrasts(case2 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
 
 
-lrt.edgeR <- glmLRT(fit.edgeR, contrast=contrasts.edgeR)
+qlf.edgeR <- glmQLFTest(fit.edgeR, contrast=contrasts.edgeR)
 
 ##### DGE at padjust 0.05
 
 # Access results tables
-edgeR_results <- lrt.edgeR$table
-sig.edgeR <- decideTestsDGE(lrt.edgeR, adjust.method="BH", p.value = p.threshold)
+edgeR_results <- qlf.edgeR$table
+sig.edgeR <- decideTestsDGE(qlf.edgeR, adjust.method="BH", p.value = p.threshold)
 #View(sig.edgeR) 
 significant_table <- edgeR_results[which(sig.edgeR != 0),]
 significant_table$gene <- row.names(significant_table)
