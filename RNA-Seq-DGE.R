@@ -167,13 +167,13 @@ fit.edgeR <- glmQLFit(dge, design.mat)  #glmFit
 
 contrasts.edgeR <- makeContrasts(case1 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
 
-lrt.edgeR <-glmQLFTest(fit.edgeR, contrast=contrasts.edgeR)  # glmLRT
+qlf.edgeR <-glmQLFTest(fit.edgeR, contrast=contrasts.edgeR)  # glmLRT
 
 ##### DGE at padjust 0.05
 
 # Access results tables
-edgeR_results <- lrt.edgeR$table
-sig.edgeR <- decideTestsDGE(lrt.edgeR, adjust.method="BH", p.value = p.threshold)
+edgeR_results <- qlf.edgeR$table
+sig.edgeR <- decideTestsDGE(qlf.edgeR, adjust.method="BH", p.value = p.threshold)
 #View(sig.edgeR) 
 significant_table <- edgeR_results[which(sig.edgeR != 0),]
 significant_table$gene <- row.names(significant_table)
