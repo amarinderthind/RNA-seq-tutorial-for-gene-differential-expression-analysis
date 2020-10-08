@@ -151,15 +151,23 @@ dge <- estimateGLMTrendedDisp(dge, design.mat)
 dge<- estimateGLMTagwiseDisp(dge,design.mat)
 # Plot mean-variance
 #plotBCV(dge)
-# Model fitting
 
-fit.edgeR <- glmFit(dge, design.mat)
+
+# Model fitting 
+##  EdgeR glmLRT vs glmQLFTest ## https://support.bioconductor.org/p/84291/
+
+##  both of the methods will work for your data set, the QL F-test is probably the better choice. 
+##There are some situations where the QL F-test doesn't work well - for example, if you don't have replicates,
+##you'd have to supply a fixed dispersion, which defeats the whole point of modelling estimation uncertainty.
+##Another situation is where the dispersions are very large and the counts are very small, whereby some of the approximations in the QL framework seem to fail.
+
+fit.edgeR <- glmQLFit(dge, design.mat)  #glmFit
 
 # Differential expression
 
 contrasts.edgeR <- makeContrasts(case1 - Control, levels=design.mat)    ##FirstC-SecondC ##Define 
 
-lrt.edgeR <- glmLRT(fit.edgeR, contrast=contrasts.edgeR)
+lrt.edgeR <-glmQLFTest(fit.edgeR, contrast=contrasts.edgeR)  # glmLRT
 
 ##### DGE at padjust 0.05
 
