@@ -18,7 +18,7 @@ library("biomaRt")
 
 ###################### load the raw count matrix #######################
 
-setwd("Path_to_working_directory")
+setwd("./") #Path_to_working_directory
 
 rawcount<-read.table ("RawGeneCounts.tsv",header=TRUE,  sep="\t",  row.names=1)
 
