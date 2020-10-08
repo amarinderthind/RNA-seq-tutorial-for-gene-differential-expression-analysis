@@ -35,7 +35,7 @@ library("biomaRt")
 # load the raw count matrix
 
 ```{r}
-setwd("/Users/athind/Desktop/RNA-seq-tutorial-for-gene-differential-expression-analysis-master/")
+setwd("./")
 
 rawcount<-read.table ("RawGeneCounts.tsv",header=TRUE,  sep="\t",  row.names=1)
 ```
