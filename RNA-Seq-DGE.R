@@ -222,10 +222,3 @@ emapplot(x, color="pvalue")
 viewPathway("Extracellular matrix organization", readable=TRUE, foldChange=genes1)   ## it's an example
 
 
-
-
-
-## Save session info
-sessionInfo()
-writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
-
