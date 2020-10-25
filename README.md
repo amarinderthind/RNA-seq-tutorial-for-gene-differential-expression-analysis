@@ -28,6 +28,9 @@ No significant enrichment found from the demo example, so enrichments plots are 
 # Note:
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix). 
 
+[embed]https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.pdf[/embed]
+
+
 # Reading material or relavant articles
 [Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
 
