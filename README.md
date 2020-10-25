@@ -28,7 +28,7 @@ No significant enrichment found from the demo example, so enrichments plots are 
 # Note:
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix). 
 
-https://docs.google.com/viewer?url=https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.pdf
+
 
 
 # Reading material or relavant articles
