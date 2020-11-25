@@ -118,7 +118,8 @@ dge <- calcNormFactors(dge, method = "TMM")
 
 # filter out lowly expressed genes
 keep <- filterByExpr(dge)
-dge <- dge[keep,,keep.lib.sizes=FALSE]  # It is recommended to recalculate the library sizes of the DGEList object after the filtering, although the downstream analysis is robust to whether this is done or not.
+dge <- dge[keep,keep.lib.sizes=FALSE]  # It is recommended to recalculate the library sizes of the DGEList object after the filtering,
+                                        #although the downstream analysis is robust to whether this is done or not.
 
 # You can also filter the expression matrix based on the treatment factors of scientific interest 
 #keep <- filterByExpr(y, group=Condition)
