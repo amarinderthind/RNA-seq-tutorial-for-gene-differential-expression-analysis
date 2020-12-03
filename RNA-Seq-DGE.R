@@ -44,6 +44,8 @@ p.threshold <- 0.05   ##define threshold for filtering
 ### subset raw and conditional data for defined pairs
 
 anno <- anno[(anno$Condition ==firstC |anno$Condition ==SecondC),]
+
+anno <- anno[anno$sample %in% names(rawcount),]
 rawcount <- rawcount[,names(rawcount) %in% anno$sample]
 
 ############################### Create DESeq2 datasets #############################
