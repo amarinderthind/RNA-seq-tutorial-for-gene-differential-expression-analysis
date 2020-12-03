@@ -71,7 +71,7 @@ genes.deseq <- row.names(res)[which(res$threshold)]
 
 genes_deseq2_sig <- res[which(res$threshold),]
 
-file <- paste('Deseq2_',firstC,'_v_',SecondC,'_results_significant_padj0.05.csv',sep = '')
+file <- paste('Deseq2_',firstC,'_v_',SecondC,'_results_significant_padj',p.threshold,'.csv',sep = '')
 all_results <- paste('Deseq2_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
 
 write.table(genes_deseq2_sig,file,sep = ",")
@@ -186,7 +186,7 @@ genes.edgeR <- row.names(edgeR_results)[which(sig.edgeR != 0)]
 edgeR_results$genes <- row.names(edgeR_results)
 
 
-file_sigTab <- paste('edgeR_',firstC,'_v_',SecondC,'_results_significant_padj0.05.csv',sep = '')
+file_sigTab <- paste('edgeR_',firstC,'_v_',SecondC,'_results_significant_padj',p.threshold,'.csv',sep = '')
 file_allRes <- paste('edgeR_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
 
 write.table(significant_table,file_sigTab,sep = ",")
