@@ -11,6 +11,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 #BiocManager::install("edgeR")
 #BiocManager::install("biomaRt")
 #BiocManager::install('PCAtools')
+#BiocManager::install('EnhancedVolcano')
 
 library(edgeR)
 library(DESeq2)
@@ -78,8 +79,9 @@ nam <- paste('down_in',firstC, sep = '_')
 res[, nam] <- as.logical(res$log2FoldChange < 0)
 
 genes.deseq <- row.names(res)[which(res$threshold)]
-
 genes_deseq2_sig <- res[which(res$threshold),]
+
+
 
 file <- paste('Deseq2_',firstC,'_v_',SecondC,'_results_significant_padj',p.threshold,'.csv',sep = '')
 all_results <- paste('Deseq2_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
