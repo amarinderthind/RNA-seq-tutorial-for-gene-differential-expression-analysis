@@ -61,6 +61,16 @@ dds <- DESeq(dds)
 contrast<- c("Condition",firstC,SecondC)
 
 res <- results(dds, contrast=contrast)
+
+### Valcono plot
+library(EnhancedVolcano)
+
+EnhancedVolcano(res,
+                lab = rownames(res),
+                x = 'log2FoldChange',
+                y = 'pvalue')   ## Default cut-off for log2FC is >|2| and for P value is 10e-6. USE  pCutoff = 10e-6, FCcutoff = 2.0 
+
+
 res$threshold <- as.logical(res$padj < p.threshold)  #Threshold defined earlier
 
 nam <- paste('down_in',firstC, sep = '_')
