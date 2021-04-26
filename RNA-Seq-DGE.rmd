@@ -1,7 +1,7 @@
 ---
 title: "RNAseq turtorial for DEG analysis"
 author: "Amarinder Singh Thind"
-date: "08 Oct, 2020"
+date: "26 April, 2021"
 output:
   pdf_document:
     toc: yes
