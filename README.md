@@ -34,6 +34,8 @@ If data obtained by different batch processing please consider ~batch (batch eff
 # Reading material or relavant articles
 [Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
 
+[Other emerging bulk RNASeq applications](https://doi.org/10.1093/bib/bbab259)
+
 [EdgeR](https://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf)
 
 [Deseq2](https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
