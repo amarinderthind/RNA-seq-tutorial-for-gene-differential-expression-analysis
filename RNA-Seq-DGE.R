@@ -127,6 +127,12 @@ pheatmap(sampleDistMatrix,
 
 dge <- DGEList(counts=rawcount, group=anno$Condition)
 
+
+## Other way of adding the metadata  
+#dge$samples$batch       <- anno$batch  ##if we have this information
+#dge$samples$treatment <- anno$Condition
+
+
 # Normalize by total count
 dge <- calcNormFactors(dge, method = "TMM")
 
@@ -142,8 +148,7 @@ dge <- dge[keep,keep.lib.sizes=FALSE]  # It is recommended to recalculate the li
 ## PCA ## for more details, please visit following link
 ##https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html
 library(PCAtools)
-
-cpmlog <- cpm(dge, log = TRUE, prior.count = 1)
+cpmlog <- cpm(dge, log = TRUE, prior.count = 1) ##
 
 p <-pca(cpmlog, metadata = anno, removeVar = 0.1) ## -- removing the lower 10% of variables based on variance
 #biplot(p)
