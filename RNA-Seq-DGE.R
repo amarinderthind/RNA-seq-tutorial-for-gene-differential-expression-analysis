@@ -1,21 +1,14 @@
 ### Author##############
 ## Amarinder Singh Thind
 
-
 # Install and load packages
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-
+#if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 #BiocManager::install("DESeq2")
 #BiocManager::install("edgeR")
 #BiocManager::install("biomaRt")
 #BiocManager::install('PCAtools')
 #BiocManager::install('EnhancedVolcano')
-
-library(edgeR)
-library(DESeq2)
-library("biomaRt")
 
 ###################### load the raw count matrix #######################
 
@@ -24,6 +17,7 @@ setwd("./") #Path_to_working_directory
 rawcount<-read.table ("RawGeneCounts.tsv",header=TRUE,  sep="\t",  row.names=1)
 
 ######################  Filter for coding genes (In case want to filter non-coding Genes) ########################
+library("biomaRt")
 
 mart <- useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
 all_coding_genes <- getBM(attributes = c( "hgnc_symbol"), filters = c("biotype"), values = list(biotype="protein_coding"), mart = mart)
@@ -41,7 +35,6 @@ firstC<-"case1"       #case1 #case2 #case3 etc
 SecondC <-"Control"     
 p.threshold <- 0.05   ##define threshold for filtering
 
-
 ### subset raw and conditional data for defined pairs
 
 anno <- anno[(anno$Condition ==firstC |anno$Condition ==SecondC),]
@@ -50,8 +43,22 @@ anno <- anno[anno$sample %in% names(rawcount),]
 rawcount <- rawcount[,names(rawcount) %in% anno$sample]
 
 ############################### Create DESeq2 datasets #############################
+library(DESeq2)
 
 dds <- DESeqDataSetFromMatrix(countData = rawcount, colData = anno, design = ~Condition )
+#View(counts(dds))
+
+dds <- estimateSizeFactors(dds)
+
+normalized_counts <- counts(dds, normalized=TRUE)  ## However,Deseq2 use raw count #This one is good for visualization purpose
+
+#View(normalized_counts)
+write.table(normalized_counts, file="normalized_counts.txt", sep="\t", quote=F, col.names=NA)
+ 
+### Transform counts for data visualization
+rld <- rlog(dds, blind=TRUE)
+### Plot PCA 
+plotPCA(rld, intgroup="Condition")
 
 ## Run DESEQ2
 dds <- DESeq(dds)
@@ -89,41 +96,8 @@ all_results <- paste('Deseq2_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
 write.table(genes_deseq2_sig,file,sep = ",")
 write.table(res,all_results,sep = ",")
 
-################### PCA and Heat-MAp Plots ############################
-
-## Varinace transformation vst or rlog
-vsd <- vst(dds, blind=FALSE)   #Variance type (a) Vst or (b) rlog
-#rld <- rlog(dds, blind=FALSE) 
-
-library(ggplot2)
-###### PCA with design consideration ###
-pcaData <- plotPCA(vsd, intgroup=c("Condition", "sample"), returnData=TRUE)
-percentVar <- round(100 * attr(pcaData, "percentVar"))
-ggplot(pcaData, aes(PC1, PC2, color=sample, shape=Condition)) +
-  geom_point(size=3) +
-  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
-  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
-  coord_fixed()
-
-##heatmap
-sampleDists <- dist(t(assay(vsd)))
-library("RColorBrewer")
-library('pheatmap')
-sampleDistMatrix <- as.matrix(sampleDists)
-
-rownames(sampleDistMatrix) <- paste(vsd$Condition, vsd$sample, sep="-")
-
-colnames(sampleDistMatrix) <- NULL
-colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
-pheatmap(sampleDistMatrix,
-         clustering_distance_rows=sampleDists,
-         clustering_distance_cols=sampleDists,
-         col=colors)
-
-
-
 ############## edgeR  ##########################
-
+library(edgeR)
 
 dge <- DGEList(counts=rawcount, group=anno$Condition)
 
@@ -144,10 +118,10 @@ dge <- dge[keep,keep.lib.sizes=FALSE]  # It is recommended to recalculate the li
 # You can also filter the expression matrix based on the treatment factors of scientific interest 
 #keep <- filterByExpr(y, group=Condition)
 
-
-## PCA ## for more details, please visit following link
-##https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html
+## PCA plot on logCPM count
+## for more details, please visit following link ##https://bioconductor.org/packages/release/bioc/vignettes/PCAtools/inst/doc/PCAtools.html
 library(PCAtools)
+
 cpmlog <- cpm(dge, log = TRUE, prior.count = 1) ##
 
 p <-pca(cpmlog, metadata = anno, removeVar = 0.1) ## -- removing the lower 10% of variables based on variance
