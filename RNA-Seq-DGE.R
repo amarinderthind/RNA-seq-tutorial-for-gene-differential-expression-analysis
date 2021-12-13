@@ -63,6 +63,8 @@ plotPCA(rld, intgroup="Condition")
 ## Run DESEQ2
 dds <- DESeq(dds)
 
+##ensure your data is a good fit for the DESeq2 model
+plotDispEsts(dds)
 ################# contrast based  comparison ##########################
 
 #In case of multiple comparisons ## we need to change the contrast for every comparision
