@@ -46,6 +46,8 @@ rawcount <- rawcount[,names(rawcount) %in% anno$sample]
 library(DESeq2)
 
 dds <- DESeqDataSetFromMatrix(countData = rawcount, colData = anno, design = ~Condition )
+
+##dds <- DESeqDataSetFromMatrix(countData = rawcount, colData = anno, design =  ~Batch+Condition )  ###USE this one if you have extra col in anno data with Batch info
 #View(counts(dds))
 
 dds <- estimateSizeFactors(dds)
@@ -98,8 +100,68 @@ all_results <- paste('Deseq2_',firstC,'_v_',SecondC,'_all_results.csv',sep = '')
 write.table(genes_deseq2_sig,file,sep = ",")
 write.table(res,all_results,sep = ",")
 
+########### Plots normalized count of top 20 genes ## sorted based on padjust and filter by |logFC| >=1
+
+res$gene <- row.names(res)
+
+# Order results by padj values
+top20 <- res %>% 
+  arrange(padj) %>% 	#Arrange rows by padj values
+  filter(abs(log2FoldChange) >=1) %>%   #filter based on logFC
+  pull(gene) %>% 		#Extract character vector of ordered genes
+  head(n=20) 		#Extract the first 20 genes
+
+top20_norm <- as.data.frame(normalized_counts[rownames(normalized_counts) %in% top20,])
+
+top20_norm_v2 <- top20_norm ## will use later for heatmap
+
+top20_norm <- (top20_norm+1) ## in later step to remove infinity bias due to log
+                                           
+top20_norm$gene <-  row.names(top20_norm)  
+top20_norm <- top20_norm %>% 
+  pivot_longer(!gene, names_to = "samplename", values_to = "normalized_counts") # Gathering the columns to have normalized counts to a single column
+ 
+# Create tibbles including row names
+mov10_meta <- anno %>% 
+  rownames_to_column(var="samplename") %>% 
+  as_tibble()
+
+top20_norm <- inner_join(mov10_meta, top20_norm)
+
+################3
+## plot using ggplot2
+
+ggplot(top20_norm) +
+  geom_point(aes(x = gene, y = normalized_counts, color = Condition)) +
+  scale_y_log10() +
+  xlab("Genes") +
+  ylab("log 10 CPM Normalized Counts") +
+  ggtitle("Top 20 Significant DE Genes with abs(logFC) =>1") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+##################
+
+### Set a color palette
+heat_colors <- brewer.pal(6, "YlOrRd")
+
+### Run pheatmap
+ 
+pheatmap(top20_norm_v2 , 
+         color = heat_colors, 
+         cluster_rows = T, 
+         show_rownames = T,
+         annotation = anno[,1:2], 
+         border_color = NA, 
+         fontsize = 10, 
+         scale = "row", 
+         fontsize_row = 10, 
+         height = 20)
+
 ############## edgeR  ##########################
 library(edgeR)
+#################################################
 
 dge <- DGEList(counts=rawcount, group=anno$Condition)
 
