@@ -33,6 +33,11 @@ If data obtained by different batch processing please consider ~batch (batch eff
 
 ![alt text](RNA-Seq-DGE.pdf)
 
+Plots 
+
+
+
+
 # Reading material or relavant articles
 [Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
 
