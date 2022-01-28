@@ -34,7 +34,8 @@ If data obtained by different batch processing please consider ~batch (batch eff
 ![alt text](RNA-Seq-DGE.pdf)
 
 Plots 
-![top 20 DEG with norm count](https://user-images.githubusercontent.com/45668229/151488601-61079b60-d7c6-4e2c-a9f0-b160aeb49153.png)
+
+![top 20 DEG with norm count](https://user-images.githubusercontent.com/45668229/151488929-7f5c2517-935d-472c-96fc-c91e0afe2642.png)
 
 ![HeatMap](https://user-images.githubusercontent.com/45668229/151488668-0722347f-6768-47db-8ea1-7fb6d42b2e8c.png)
 ![Volcano_plot](https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png)
