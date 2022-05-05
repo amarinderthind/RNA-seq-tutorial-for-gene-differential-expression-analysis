@@ -30,9 +30,6 @@ No significant enrichment found from the demo example, so enrichments plots are 
 # Note:
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix) or use CombatSeq as defined in the new script. 
 
-
-![alt text](RNA-Seq-DGE.pdf)
-
 Plots 
 ![PCA plot showing Batch effect before normalization](https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png)
 ![PCA plot after batch effect correction using CombatSeq](https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png)
