@@ -1,0 +1,13 @@
+,Sample,Condition,Batch,Sex
+sample_1,sample_1,Condition_A,Batch1,M
+sample_2,sample_2,Condition_B,Batch1,M
+sample_3,sample_3,Condition_A,Batch1,F
+sample_4,sample_4,Condition_B,Batch2,F
+sample_5,sample_5,Condition_A,Batch2,F
+sample_6,sample_6,Condition_A,Batch4,F
+sample_7,sample_7,Condition_B,Batch3,F
+sample_8,sample_8,Condition_B,Batch3,M
+sample_9,sample_9,Condition_B,Batch4,M
+sample_10,sample_10,Condition_B,Batch2,M
+sample_11,sample_11,Condition_A,Batch2,M
+sample_12,sample_12,Condition_B,Batch2,F
