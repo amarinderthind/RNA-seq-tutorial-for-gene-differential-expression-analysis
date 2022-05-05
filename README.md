@@ -34,6 +34,7 @@ If data obtained by different batch processing please consider ~batch (batch eff
 ![alt text](RNA-Seq-DGE.pdf)
 
 Plots 
+![PCA Batch effect](https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png)
 
 ![top 20 DEG with norm count](https://user-images.githubusercontent.com/45668229/151488929-7f5c2517-935d-472c-96fc-c91e0afe2642.png)
 
