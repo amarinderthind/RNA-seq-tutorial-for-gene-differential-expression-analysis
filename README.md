@@ -28,19 +28,22 @@ You should have a raw count and annotation/metadata file for running this analys
 No significant enrichment found from the demo example, so enrichments plots are empty or commented. 
 
 # Note:
-If data obtained by different batch processing please consider ~batch (batch effect in the design matrix). 
+If data obtained by different batch processing please consider ~batch (batch effect in the design matrix) or use CombatSeq as defined in the new script. 
 
 
 ![alt text](RNA-Seq-DGE.pdf)
 
 Plots 
-![PCA Batch effect](https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png)
+![PCA plot showing Batch effect before normalization](https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png)
+![PCA plot after batch effect correction using CombatSeq](https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png)
 
 ![top 20 DEG with norm count](https://user-images.githubusercontent.com/45668229/151488929-7f5c2517-935d-472c-96fc-c91e0afe2642.png)
 
 ![HeatMap](https://user-images.githubusercontent.com/45668229/151488668-0722347f-6768-47db-8ea1-7fb6d42b2e8c.png)
 ![Volcano_plot](https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png)
 
+![Enrichment ORA test](https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png)
+![Enrichment GSEA](https://user-images.githubusercontent.com/45668229/166875114-89edac5a-b946-43eb-b18e-f02d361b7220.png)
 
 
 
