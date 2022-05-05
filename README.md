@@ -1,5 +1,5 @@
-# RNASeq tutorial for gene differential expression analysis
-This tutorial is created for educational purposes. 
+# RNASeq tutorial for gene differential expression analysis and Funcrional enrichment analysis
+This tutorial is created for educational purposes and was presentated on Workshop organised by Dollar education https://www.dollareducation.org/home
 
 [DOI 10.13140/RG.2.2.26508.13443]( http://doi.org/10.13140/RG.2.2.26508.13443)
 
