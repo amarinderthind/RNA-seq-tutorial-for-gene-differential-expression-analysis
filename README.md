@@ -3,7 +3,7 @@ This tutorial is created for educational purposes and was presentated on Worksho
 
 [DOI 10.13140/RG.2.2.26508.13443]( http://doi.org/10.13140/RG.2.2.26508.13443)
 
-Interested in exploring more applications of the RNASeq, Please read here more https://doi.org/10.1093/bib/bbab259
+Interested in exploring more applications of the RNASeq, read here more https://doi.org/10.1093/bib/bbab259
 
 # About the RNA-Seq analysis
 The R script performs several steps in RNAseq gene differential expression analysis, including filtering, preprocessing, visualization, clustering, and Enrichment. For the analysis, several R Bioconductor packages are required to be installed (Installation commands are provided in the script. However, users can also refer to the Bioconductor website for detailed instructions). 
