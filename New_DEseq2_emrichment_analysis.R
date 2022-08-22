@@ -105,8 +105,12 @@ dds = DESeq2::DESeqDataSetFromMatrix(countData = adjusted_counts, colData = anno
 #View(counts(dds))
 
 dds <- estimateSizeFactors(dds)
-normalized_counts <- counts(dds, normalized=TRUE)  ## extract normalization count after executing Deseq2 for visualization purpose
+
 vst <- vst(dds, blind=TRUE)  ### Transform counts for data visualization #options (1) vst (2) rld
+
+##normalized_counts <- counts(dds, normalized=TRUE)  ## extract normalization count after executing Deseq2 for visualization purpose
+normalized_counts <- as.data.frame(assay(vst))
+
 plotPCA(vst, intgroup="Condition")  ### Plot PCA 
 
 ## Run DESEQ2
@@ -191,7 +195,7 @@ top20_norm <- inner_join(mov10_meta, top20_norm)  ## we are merging anno of 20 w
 
 ggplot(top20_norm) +
   geom_point(aes(x = gene, y = normalized_counts, color = Condition)) +
-  scale_y_log10() +
+  ## scale_y_log10() +  ##want to scale it or not??
   xlab("Genes") +
   ylab("log 10 CPM Normalized Counts") +
   ggtitle("Top 20 Significant DE Genes with abs(logFC) =>1") +
@@ -214,7 +218,7 @@ pheatmap(top20_norm_v2 ,
          annotation_col = anno[,1:2], 
          border_color = NA, 
          fontsize = 10, 
-         scale = "row", 
+         scale = "row",   ## for VST_count you may not need Scaling
          fontsize_row = 10, 
          height = 20)
 
