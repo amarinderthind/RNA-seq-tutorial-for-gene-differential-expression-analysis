@@ -1,5 +1,4 @@
 ### RNAseq using Deseq2 and Functional enrichment Analysis ####
-### Dr. Amarinder Singh Thind and Simarpreet Kaur (PhD Student)
 ### Date : 18-19 April, 2022
 
 ##### Install packages, if not done before 
