@@ -21,10 +21,35 @@ rawcount <- round(rawcount)
 rawcount[is.na(rawcount)] <- 0
 
 
+## Discard genes, which are expressed in less than 20% of all samples (considering that we have 2 conditions in total )
+##  % selection is based on no. of conditions  ## more condition means less %
+keep <- rowSums(rawcount > 0) >= round(ncol(rawcount)*.20)  
+rawcount <- rawcount[keep,]
+
+
 ###################### Data annotation  #################################
 
 anno <-read.table ("Annotation_of_samples_12_Samples_ALL.csv",header=TRUE,  sep=",", row.names = 1) ##In this case we have 3 coulmns (a) sample (b) Condition (c) batch
 #rownames(anno) <- anno$sample  ##add rownames as sample name (if not already), because pca function check rownames of anno == col of data matrix
+
+table(anno$Condition)
+
+library(tidyverse)
+library('dplyr') ##HAS COUNT FUNCTION
+
+### incase want to consider subset of samples based on some condition (when multiple e.g. >3 )
+#anno <- anno %>% 
+#  as.data.frame %>%
+#  filter(anno$Condition =='Condition_A' |anno$Condition =='Condition_B' | anno$Condition == 'Condition_C' )  %>%
+#  arrange(Condition)  	#Arrange rows by padj values 
+
+
+## sort anno based on condition ## good representation in heatmap 
+anno <- anno %>% 
+  as.data.frame %>%
+  arrange(Condition) 
+
+
 
 ##############################################################
 ############ PCA plot for pre DE investigation ##############
@@ -213,9 +238,10 @@ heat_colors <- brewer.pal(6, "YlOrRd")
 library(pheatmap) 
 pheatmap(top20_norm_v2 , 
          color = heat_colors, 
-         cluster_rows = T, 
+         cluster_rows = T,
+         cluster_cols = F,
          show_rownames = T,
-         annotation_col = anno[,1:2], 
+         annotation_col = anno[,c(1,3)], 
          border_color = NA, 
          fontsize = 10, 
          scale = "row",   ## for VST_count you may not need Scaling
@@ -231,9 +257,6 @@ res <- as.data.frame(res)
 View(res)
 
 write.table(res,all_results,sep = ",")  ## no LogFC threshold
-
-
-
 
 
 
