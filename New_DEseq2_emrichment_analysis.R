@@ -229,9 +229,7 @@ ggplot(top20_norm) +
 
 
 ##################
-library(RColorBrewer)
-### Set a color palette
-heat_colors <- brewer.pal(6, "YlOrRd")
+heat_colors <- colorRampPalette(c("blue",'white','red'))(n=40)
 
 ### Run pheatmap
 library(pheatmap) 
