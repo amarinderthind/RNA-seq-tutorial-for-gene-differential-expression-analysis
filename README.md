@@ -1,17 +1,18 @@
-## RNASeq tutorial for gene differential expression analysis and Funcrional enrichment analysis (Updated on 05 May 2022)
+### RNASeq tutorial for gene differential expression analysis and Funcrional enrichment analysis
+#### (Updated on 05 May 2022)
 This tutorial is created for educational purposes and was presentated on Workshop organised by Dollar education https://www.dollareducation.org/home
 
 [DOI 10.13140/RG.2.2.26508.13443]( http://doi.org/10.13140/RG.2.2.26508.13443)
 
 Interested in exploring more applications of the RNASeq, read here more https://doi.org/10.1093/bib/bbab259
 
-## About the RNA-Seq analysis
+### About the RNA-Seq analysis
 The R script performs several steps in RNAseq gene differential expression analysis, including filtering, preprocessing, visualization, clustering, and Enrichment. For the analysis, several R Bioconductor packages are required to be installed (Installation commands are provided in the script. However, users can also refer to the Bioconductor website for detailed instructions). 
 
-## Required data files
+### Required data files
 You should have a raw count and annotation/metadata file for running this analysis. Raw count files are usually obtained from tools such as featureCount, Rsem etc.
 
-## Bioconductor packages to be installed
+### Bioconductor packages to be installed
  DESeq2
  
  edgeR
@@ -22,12 +23,12 @@ You should have a raw count and annotation/metadata file for running this analys
  
  ReactomePA (enrichment analysis)
 
-# [RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
+### [RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
   [RNA-Seq-DGE.rmd](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.rmd) used to create output of the script shown in [the PDF file here](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.pdf).
 
 No significant enrichment found from the demo example, so enrichments plots are empty or commented. 
 
-## Note:
+### Note:
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix) or use CombatSeq as defined in the new script. 
 
 Plots 
@@ -44,7 +45,7 @@ Plots
 
 
 
-## Reading material or relavant articles
+### Reading material or relavant articles
 [Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
 
 [Other emerging bulk RNASeq applications](https://doi.org/10.1093/bib/bbab259)
@@ -57,5 +58,5 @@ Plots
 
 [Reactome Pathway Analysis](https://www.bioconductor.org/packages/release/bioc/vignettes/ReactomePA/inst/doc/ReactomePA.html)
 
-### Contact
+#### Contact
 In case you have any query please feel free to contact thind.amarinder@gmail.com for any other queries.
