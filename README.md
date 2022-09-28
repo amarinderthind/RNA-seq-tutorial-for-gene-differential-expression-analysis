@@ -1,8 +1,6 @@
 ### RNASeq tutorial for gene differential expression analysis and Funcrional enrichment analysis
 #### (Updated on 05 May 2022)
-This tutorial is created for educational purposes and was presentated on Workshop organised by Dollar education https://www.dollareducation.org/home
-
-[DOI 10.13140/RG.2.2.26508.13443]( http://doi.org/10.13140/RG.2.2.26508.13443)
+This tutorial is created for educational purposes and was presentated on Workshop organised by Dollar education.
 
 Interested in exploring more applications of the RNASeq, read here more https://doi.org/10.1093/bib/bbab259
 
