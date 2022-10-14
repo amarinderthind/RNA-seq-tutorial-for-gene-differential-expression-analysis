@@ -3,6 +3,9 @@
 This tutorial is created for educational purposes and was presentated on Workshop organised by Dollar education.
 
 Interested in exploring more applications of the RNASeq, read here more https://ro.uow.edu.au/test2021/3578/ 
+
+Want to adjust for tumor purity check  https://www.nature.com/articles/s41587-022-01440-w
+
 ### About the RNA-Seq analysis
 The R script performs several steps in RNAseq gene differential expression analysis, including filtering, preprocessing, visualization, clustering, and Enrichment. For the analysis, several R Bioconductor packages are required to be installed (Installation commands are provided in the script. However, users can also refer to the Bioconductor website for detailed instructions). 
 
