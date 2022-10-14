@@ -1,6 +1,4 @@
 ### RNAseq using Deseq2 and Functional enrichment Analysis ####
-### Date : 18-19 April, 2022
-
 ##### Install packages, if not done before 
 
 # if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -92,7 +90,8 @@ lograwcount <- as.matrix(log2(rawcount +1))  ## log transformation of rawcount f
           hline = 0, vline = 0,
           legendPosition = 'right',encircle = T)
 
-   
+## note for cancer related analysis ## new RUVIII method by can adjust for tumor purity
+## https://www.nature.com/articles/s41587-022-01440-w 
 
   ##### Do we suppose to remove any default sample/s  #########
    
