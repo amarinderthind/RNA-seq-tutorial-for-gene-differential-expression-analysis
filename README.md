@@ -53,7 +53,7 @@ No significant enrichment found from the demo example, so enrichments plots are 
 ### Note:
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix) or use CombatSeq as defined in the new script. 
 
-Plots 
+### Plots 
 
  <p align="center">
 <img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
@@ -69,10 +69,11 @@ Plots
 
 
  
-<img src="https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png" width=85% height="700">&nbsp; &nbsp; &nbsp; &nbsp;
+
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png" width=45% height="500">
-<img src="https://user-images.githubusercontent.com/45668229/166875114-89edac5a-b946-43eb-b18e-f02d361b7220.png" width=45% height="500">
+<img src="https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png" width=58% height="400">
+<img src="https://user-images.githubusercontent.com/45668229/166875114-89edac5a-b946-43eb-b18e-f02d361b7220.png" width=40% height="400">
 </p>
 
 ### Reading material or relavant articles
