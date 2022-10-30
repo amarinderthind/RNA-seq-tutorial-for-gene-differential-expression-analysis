@@ -40,6 +40,8 @@ library('dplyr') ##HAS COUNT FUNCTION
 #  arrange(Condition)  	#Arrange rows by padj values 
 ```
 
+
+
 ### Main Bioconductor packages to be installed
  DESeq2, edgeR, biomaRt (Very useful for gene filtering and annotations), PCAtools (PCA detailed analysis), ReactomePA (enrichment analysis)
 
@@ -54,23 +56,24 @@ If data obtained by different batch processing please consider ~batch (batch eff
 Plots 
 
  <p align="center">
-<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=45% height="400">
+<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=45% height="500">
  
 </p>
 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45668229/151488929-7f5c2517-935d-472c-96fc-c91e0afe2642.png" width=45% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="https://user-images.githubusercontent.com/45668229/151488668-0722347f-6768-47db-8ea1-7fb6d42b2e8c.png" width=45% height="400">
- 
+<img src="https://user-images.githubusercontent.com/45668229/151488929-7f5c2517-935d-472c-96fc-c91e0afe2642.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/151488668-0722347f-6768-47db-8ea1-7fb6d42b2e8c.png" width=45% height="500">
 </p>
-![Volcano_plot](https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png)
-
-![Enrichment ORA test](https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png)
-![Enrichment GSEA](https://user-images.githubusercontent.com/45668229/166875114-89edac5a-b946-43eb-b18e-f02d361b7220.png)
 
 
+ 
+<img src="https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
+<p align="center">
+<img src="https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png" width=45% height="500">
+<img src="https://user-images.githubusercontent.com/45668229/166875114-89edac5a-b946-43eb-b18e-f02d361b7220.png" width=45% height="500">
+</p>
 
 ### Reading material or relavant articles
 [Explore about different normalization methods here](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
