@@ -22,6 +22,24 @@ rawcount <- round(rawcount)
 rawcount[is.na(rawcount)] <- 0
 ```
 
+Loading and filtering Data annotation  file
+
+```
+anno <-read.table ("Annotation_of_samples_12_Samples_ALL.csv",header=TRUE,  sep=",", row.names = 1) ##In this case we have 3 coulmns (a) sample (b) Condition (c) batch
+#rownames(anno) <- anno$sample  ##add rownames as sample name (if not already), because pca function check rownames of anno == col of data matrix
+
+table(anno$Condition)
+
+library(tidyverse)
+library('dplyr') ##HAS COUNT FUNCTION
+
+### incase want to consider subset of samples based on some condition (when multiple e.g. >3 )
+#anno <- anno %>% 
+#  as.data.frame %>%
+#  filter(anno$Condition =='Condition_A' |anno$Condition =='Condition_B' | anno$Condition == 'Condition_C' )  %>%
+#  arrange(Condition)  	#Arrange rows by padj values 
+```
+
 ### Main Bioconductor packages to be installed
  DESeq2, edgeR, biomaRt (Very useful for gene filtering and annotations), PCAtools (PCA detailed analysis), ReactomePA (enrichment analysis)
 
