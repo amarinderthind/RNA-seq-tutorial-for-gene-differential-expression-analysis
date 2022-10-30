@@ -13,7 +13,7 @@ The R script performs several steps in RNAseq gene differential expression analy
 You should have a raw count and annotation/metadata file for running this analysis. Raw count files are usually obtained from tools such as featureCount, Rsem etc.
 
 ```
-setwd("/Users/athind/Dropbox/RNAseq_using_DEseq2-april16/") #Path_to_working_directory
+setwd("/Users/Path") #Path_to_working_directory
 
 rawcount<-read.table ("RawCount_input.csv",header=TRUE,  sep=",",  row.names=1)
 
