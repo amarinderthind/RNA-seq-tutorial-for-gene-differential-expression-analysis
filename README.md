@@ -12,6 +12,16 @@ The R script performs several steps in RNAseq gene differential expression analy
 ### Required data files
 You should have a raw count and annotation/metadata file for running this analysis. Raw count files are usually obtained from tools such as featureCount, Rsem etc.
 
+```
+setwd("/Users/athind/Dropbox/RNAseq_using_DEseq2-april16/") #Path_to_working_directory
+
+rawcount<-read.table ("RawCount_input.csv",header=TRUE,  sep=",",  row.names=1)
+
+## Replace NAs by zero and changing the input to required format
+rawcount <- round(rawcount) 
+rawcount[is.na(rawcount)] <- 0
+```
+
 ### Main Bioconductor packages to be installed
  DESeq2, edgeR, biomaRt (Very useful for gene filtering and annotations), PCAtools (PCA detailed analysis), ReactomePA (enrichment analysis)
 
@@ -24,6 +34,13 @@ No significant enrichment found from the demo example, so enrichments plots are 
 If data obtained by different batch processing please consider ~batch (batch effect in the design matrix) or use CombatSeq as defined in the new script. 
 
 Plots 
+
+ <p align="center">
+<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=45% height="400">
+ 
+</p>
+
 ![PCA plot showing Batch effect before normalization](https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png)
 ![PCA plot after batch effect correction using CombatSeq](https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png)
 
