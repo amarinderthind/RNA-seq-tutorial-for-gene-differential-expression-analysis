@@ -86,11 +86,15 @@ lograwcount <- as.matrix(log2(rawcount +1))  ## log transformation of rawcount f
 
 ### Plots 
 
+#### PCA plots for intial QC
+
  <p align="center">
-<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="500">&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=45% height="500">
+<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=48% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=48% height="400">
  
 </p>
+
+#### Dot plot and HeatMap
 
 
 <p align="center">
@@ -101,6 +105,8 @@ lograwcount <- as.matrix(log2(rawcount +1))  ## log transformation of rawcount f
 
  
 <img src="https://user-images.githubusercontent.com/45668229/151488762-172ce41c-d5d5-46d2-b1b2-977f91db9365.png" width=85% height="700">&nbsp; &nbsp; &nbsp; &nbsp;
+
+### Over enrichment analysis (ORA) and Gene set enrichment analysis (GSEA)
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45668229/166875037-6c2256c6-86a6-4d20-bbcb-7b22cb47ab09.png" width=58% height="400">
