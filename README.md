@@ -89,8 +89,8 @@ lograwcount <- as.matrix(log2(rawcount +1))  ## log transformation of rawcount f
 #### PCA plots for initial QC
 
  <p align="center">
-<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=48% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=48% height="400">
+<img src="https://user-images.githubusercontent.com/45668229/166874766-39a3a488-f97e-44b9-b704-659415aba683.png" width=45% height="400">&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://user-images.githubusercontent.com/45668229/166874917-03255c28-b586-4a26-9b24-20e5dbcc2299.png" width=45% height="400">
  
 </p>
 
