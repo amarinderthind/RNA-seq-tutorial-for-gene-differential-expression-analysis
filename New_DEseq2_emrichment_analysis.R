@@ -157,16 +157,26 @@ res <- results(dds, contrast=contrast)  ## extract result dataframe
 View(as.data.frame(res))
 
 ### Valcono plot
-library(EnhancedVolcano)
+# add a column for labels of DE genes
+res$diffexpressed <- "NO"
+# if log2Foldchange > 1 and p-adjusted value <= 0.05, set as "UP" 
+res$diffexpressed[res$logFC >= 1 & adj.P.Val <= 0.05] <- "UP"
+# if log2Foldchange < - 1 and adj.P.Val <= 0.05, set as "DOWN"
+res$diffexpressed[res$logFC <= -1 & res$adj.P.Val <= 0.05] <- "UP"
+# Create a new column "delabel" to de, that will contain the name of genes differentially expressed (NA in case they are not)
+res$delabel <- NA
+res$delabel[res$diffexpressed != "NO"] <- res$gene[res$diffexpressed != "NO"]
 
-EnhancedVolcano(res,
-                lab = rownames(res),
-                x = 'log2FoldChange',
-                #pCutoff = 1e-05,
-                #FCcutoff = 1,
-                y = 'pvalue')   ## Default cut-off for log2FC is >|2| and for P value is 10e-6. USE  pCutoff = 10e-6, FCcutoff = 2.0 
+library(ggrepel)
+# plot adding up all layers we have seen so far
+ggplot(data=res, aes(x=logFC, y=-log10(adj.P.Val), col=diffexpressed, label=delabel)) +
+  geom_point() + 
+  theme_minimal() +
+  geom_text_repel() +
+  scale_color_manual(values=c("blue", "black", "red")) +
+  geom_vline(xintercept=c(-1, 1), col="red") +
+  geom_hline(yintercept=-log10(0.05), col="red")
 
-#?EnhancedVolcano
 
 
 res$threshold <- as.logical(res$padj < p.threshold)  #Threshold defined earlier#creating col with logic 
