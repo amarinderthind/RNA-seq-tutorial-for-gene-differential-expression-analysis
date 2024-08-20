@@ -18,6 +18,7 @@ rawcount<-read.table ("RawGeneCounts.tsv",header=TRUE,  sep="\t",  row.names=1)
 
 ######################  Filter for coding genes (In case want to filter non-coding Genes) ########################
 library("biomaRt")
+library(dplyr) 
 
 mart <- useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
 all_coding_genes <- getBM(attributes = c( "hgnc_symbol"), filters = c("biotype"), values = list(biotype="protein_coding"), mart = mart)
