@@ -59,7 +59,7 @@ anno <- anno %>%
   arrange(Condition) 
 ```
 
-PCA plot for pre-DE investigation 
+PCA plot for pre-DE investigation  
 
 ```
 library(PCAtools)
