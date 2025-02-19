@@ -1,6 +1,6 @@
 ### RNASeq tutorial for gene differential expression analysis and Functional enrichment analysis
 
-This tutorial was created for educational purposes and was presented at a Workshop organised by Dollar Education.
+This tutorial was created for educational purposes.
 
 Interested in exploring more applications of the RNASeq, Read here https://ro.uow.edu.au/test2021/3578/ 
 
