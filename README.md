@@ -10,7 +10,7 @@ Want to adjust for tumour purity Check  https://www.nature.com/articles/s41587-0
 The R script performs several steps in RNAseq gene differential expression analysis, including filtering, preprocessing, visualization, clustering, and Enrichment. For the analysis, several R Bioconductor packages are required to be installed (Installation commands are provided in the script. However, users can also refer to the Bioconductor website for detailed instructions). 
 
 ### Main Bioconductor packages to be installed
- DESeq2, edgeR, biomaRt (Very useful for gene filtering and annotations), PCAtools (PCA detailed analysis), ReactomePA (enrichment analysis)
+ DESeq2, edgeR, biomaRt  (Very useful for gene filtering and annotations), PCAtools (PCA detailed analysis), ReactomePA (enrichment analysis)
 
 ### [RNA-Seq-DGE.R](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.R) is the R script.
   [RNA-Seq-DGE.rmd](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.rmd) used to create an output of the script shown in [the PDF file here](https://github.com/amarinderthind/RNA-seq-tutorial-for-gene-differential-expression-analysis/blob/master/RNA-Seq-DGE.pdf).
