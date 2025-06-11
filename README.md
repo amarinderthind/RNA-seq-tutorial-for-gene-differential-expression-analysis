@@ -1,4 +1,4 @@
-### RNASeq tutorial for gene differential expression analysis and Functional enrichment analysis
+### RNASeq tutorial for gene differential expression analysis and Functional enrichment analysis.
 
 This tutorial was created for educational purposes.
 
